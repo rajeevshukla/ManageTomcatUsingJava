@@ -38,6 +38,7 @@ public class ShellCommand {
 		Process p;
  		try {
  			
+ 			//here t@bkids is your system's root password.
 			 String[] cmd = {"/bin/bash","-c","echo t@bkids| sudo -S "+command};
 			p = Runtime.getRuntime().exec(cmd);
 		    System.out.println(p.waitFor());
