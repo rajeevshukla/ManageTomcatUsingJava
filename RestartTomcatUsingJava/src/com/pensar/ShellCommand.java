@@ -15,18 +15,33 @@ public class ShellCommand {
        System.out.println("ending");
 	}
  
+	
+	public void restartTomcat(){
+		run("service tomcat7 restart");
+	}
+	
+	public void  stopTomcat(){
+		run("service tomcat7 stop");
+	}
+
+	public String startTomcat(){
+	 return	run("service tomcat7 start");
+	}
+	
+	public String checkTomcatStatus(){
+		return run("service tomcat7 status");
+	}
 	public String run(String command) {
  
 		StringBuilder sb = new StringBuilder();
 		BufferedReader reader = null;
 		Process p;
- 
-		try {
+ 		try {
+ 			
 			 String[] cmd = {"/bin/bash","-c","echo t@bkids| sudo -S "+command};
 			p = Runtime.getRuntime().exec(cmd);
 		    System.out.println(p.waitFor());
-			reader = new BufferedReader(
-				new InputStreamReader(p.getInputStream()));
+			reader = new BufferedReader(new InputStreamReader(p.getInputStream()));
 			String line = "";
 			while ((line = reader.readLine()) != null) {
 				sb.append(line + "\n");

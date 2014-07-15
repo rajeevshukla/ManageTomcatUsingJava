@@ -11,10 +11,11 @@ public class ManageTomcat {
 	public static void main(String[] args) {
 		
 		try {
+			//Shutting down tomcat only one way. 
 			Socket socket=new Socket("localhost", 9005);
 			 OutputStream outputStream= socket.getOutputStream();
 			 PrintWriter printWriter=new PrintWriter(outputStream, true);
-			 printWriter.write("RESTART");
+			 printWriter.write("SHUTDOWN");
              System.out.println("comand executed successfully");
 			  printWriter.flush();
 			  
